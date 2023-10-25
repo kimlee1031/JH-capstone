@@ -17,10 +17,16 @@
         SELECT * FROM J_user WHERE usernumber = #{usernumber}
     </select>
 
-    <insert id="insertUser" parameterType="com.example.model.UserDtp">
+    <insert id="insertUser" parameterType="deu.cap.dto.UserDto">
         INSERT INTO J_user (id, username, password, email, address, phone, grade, createDate)
         VALUES (#{id}, #{username}, #{password}, #{email}, #{address}, #{phone}, #{grade}, #{createDate})
     </insert>
+
+    <select id="findUser" resultType="deu.cap.dto.UserDto">
+        SELECT * FROM j_user
+    </select>
+
+
 
     <!-- 나머지 SQL 쿼리도 정의할 수 있음 -->
 </mapper>
