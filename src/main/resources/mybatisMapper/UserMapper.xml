@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="deu.cap.mapper.UserMapper">
+    <resultMap id="UserResultMap" type="deu.cap.dto.UserDto">
+        <id property="usernumber" column="usernumber"/>
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="email" column="email"/>
+        <result property="address" column="address"/>
+        <result property="phone" column="phone"/>
+        <result property="grade" column="grade"/>
+        <result property="createDate" column="createDate"/>
+    </resultMap>
+
+    <select id="getUserByUserNumber" resultMap="UserResultMap">
+        SELECT * FROM J_user WHERE usernumber = #{usernumber}
+    </select>
+
+    <insert id="insertUser" parameterType="com.example.model.UserDtp">
+        INSERT INTO J_user (id, username, password, email, address, phone, grade, createDate)
+        VALUES (#{id}, #{username}, #{password}, #{email}, #{address}, #{phone}, #{grade}, #{createDate})
+    </insert>
+
+    <!-- 나머지 SQL 쿼리도 정의할 수 있음 -->
+</mapper>
